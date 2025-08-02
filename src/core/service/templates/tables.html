@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблицы в БД — Навигатор</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+        }
+        h1 {
+            color: #343a40;
+            font-weight: 600;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .table-card {
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .table-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-color: #adb5bd;
+        }
+        .table-card a {
+            text-decoration: none;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .table-card i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: #6c757d;
+        }
+        .table-name {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        #searchInput {
+            max-width: 300px;
+            margin: 0 auto 25px auto;
+        }
+        .dataTables_info, .dataTables_length {
+            padding-top: 10px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1><i class="bi bi-database"></i> Доступные таблицы</h1>
+
+        <div class="d-flex justify-content-center mb-4">
+            <input type="text" id="searchInput" class="form-control" placeholder="Поиск таблиц...">
+        </div>
+
+        <div id="tablesList">
+            {% for table in tables %}
+            <div class="table-card">
+                <a href="/table/{{ table }}">
+                    <i class="bi bi-table"></i>
+                    <span class="table-name">{{ table }}</span>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Инициализация DataTables для поиска и сортировки
+            $('#tablesList').DataTable({
+                paging: false,
+                searching: true,
+                info: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Поиск таблиц...",
+                    zeroRecords: "Таблицы не найдены",
+                    info: "Показано _TOTAL_ таблиц",
+                    infoEmpty: "Нет доступных таблиц",
+                },
+                dom: '<"top">rt<"bottom"il>',
+                initComplete: function() {
+                    $('.dataTables_filter input').attr('id', 'searchInput');
+                }
+            });
+
+            // Переносим поле поиска в наш кастомный input
+            $('#searchInput').keyup(function(){
+                $('#tablesList').DataTable().search($(this).val()).draw();
+            });
+        });
+    </script>
+</body>
+</html>
