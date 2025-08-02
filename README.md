@@ -91,15 +91,20 @@ git clone https://github.com/marryivanova/ETL.git
 
 <figure>
   <img src="src/docs_file/table_most_exp.png">
-  <figcaption>table</figcaption>
+  <figcaption>table most exp</figcaption>
 </figure>
 
 <figure>
   <img src="src/docs_file/table_ods_user.png">
-  <figcaption>table</figcaption>
+  <figcaption>table ods user</figcaption>
 </figure>
 
 <figure>
   <img src="src/docs_file/table_users.png">
-  <figcaption>table</figcaption>
+  <figcaption>table users</figcaption>
+</figure>
+
+<figure>
+  <img src="src/docs_file/table_products">
+  <figcaption>table products</figcaption>
 </figure>
