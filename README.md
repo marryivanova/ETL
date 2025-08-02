@@ -52,6 +52,8 @@ filtered ?= [2, 1]
 4. Чистота и структурированность кода
 5. Качество документации (README с инструкциями)
 
+Задание 1-2 -> the_first_two_tasks
+Задание 3 -> src
 
 # Sales Analysis ETL System (v3.0)
 
@@ -71,8 +73,8 @@ ETL pipeline for sales data analysis that:
 ## Quick Start
 
 ```bash
-git clone https://github.com/marryivanova/ETL.git
--  python -m venv venv
+- git clone https://github.com/marryivanova/ETL.git
+- python -m venv venv
 - venv\Scripts\activate  
 - cd ETL
 - pip install poetry

@@ -16,8 +16,19 @@ logger.propagate = False
 
 
 class MostExpensiveTransformer:
+    """Transforms product data to identify and store the most expensive products."""
+
     @staticmethod
     async def transform(db_session: AsyncSession) -> int:
+        """
+        Extracts, transforms and loads the 10 most expensive products.
+
+        Returns:
+            int: Number of successfully processed products
+
+        Raises:
+            MostExpensiveTransformationError: If any step of the transformation fails
+        """
         try:
             try:
                 await db_session.execute(MostExpensive.__table__.delete())
@@ -72,8 +83,25 @@ class MostExpensiveTransformer:
 
 
 class OdsUsersTransformer:
+    """
+    Transforms user data for storage in the Operational Data Store (ODS).
+
+    Methods:
+        transform: Performs the complete ETL process for user data
+    """
+
     @staticmethod
     async def transform(db_session: AsyncSession) -> int:
+        """
+        Extracts, transforms and loads user data into the ODS table.
+
+        Returns:
+            int: Number of successfully processed users
+
+        Raises:
+            OdsUsersTransformationError: If any step of the transformation fails
+            UserProcessingError: If processing of an individual user fails (logged but doesn't stop processing)
+        """
         try:
             try:
                 await db_session.execute(OdsUser.__table__.delete())
@@ -148,7 +176,15 @@ class OdsUsersTransformer:
 
 
 async def run_transformations(db_session: AsyncSession) -> Dict[str, int]:
+    """
+    Executes all data transformations and returns processing statistics.
 
+    Returns:
+        Dict[str, int]: Dictionary with transformation results:
+           - "most_expensive": count of processed products
+           - "ods_users": count of processed users
+           (values will be 0 if transformation failed)
+    """
     results: dict[str, int] = {}
 
     try:
