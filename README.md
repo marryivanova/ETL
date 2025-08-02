@@ -77,8 +77,9 @@ git clone https://github.com/marryivanova/ETL.git
 - cd sales-analysis-etl
 - pip install poetry
 - poetry install
-- docker-compose -f docker/docker-compose.yml up -d db
-- alembic upgrade head
+- cd C:\..\..\..\..\src\docker
+- docker-compose -f docker-compose.yaml up -d db
+- alembic upgrade head (alembic.ini -> url!!!)
 - python main.py
 
 -> Access system at: http://127.0.0.1:8000
