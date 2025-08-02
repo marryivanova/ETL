@@ -72,12 +72,14 @@ ETL pipeline for sales data analysis that:
 
 ```bash
 git clone https://github.com/marryivanova/ETL.git
-cd sales-analysis-etl
-pip install poetry
-poetry install
-docker-compose -f docker/docker-compose.yml up -d db
-alembic upgrade head
-python main.py
+-  python -m venv venv
+- venv\Scripts\activate  
+- cd sales-analysis-etl
+- pip install poetry
+- poetry install
+- docker-compose -f docker/docker-compose.yml up -d db
+- alembic upgrade head
+- python main.py
 
 -> Access system at: http://127.0.0.1:8000
 ```
