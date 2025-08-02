@@ -74,12 +74,12 @@ ETL pipeline for sales data analysis that:
 git clone https://github.com/marryivanova/ETL.git
 -  python -m venv venv
 - venv\Scripts\activate  
-- cd sales-analysis-etl
+- cd ETL
 - pip install poetry
 - poetry install
 - cd C:\..\..\..\..\src\docker
 - docker-compose -f docker-compose.yaml up -d db
-- alembic upgrade head (alembic.ini -> url!!!)
+- alembic upgrade head (alembic.ini -> url !!!)
 - python main.py
 
 -> Access system at: http://127.0.0.1:8000

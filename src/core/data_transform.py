@@ -148,7 +148,8 @@ class OdsUsersTransformer:
 
 
 async def run_transformations(db_session: AsyncSession) -> Dict[str, int]:
-    results = {}
+
+    results: dict[str, int] = {}
 
     try:
         results["most_expensive"] = await MostExpensiveTransformer.transform(db_session)

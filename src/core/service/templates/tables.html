@@ -101,7 +101,6 @@
                 }
             });
 
-            // Переносим поле поиска в наш кастомный input
             $('#searchInput').keyup(function(){
                 $('#tablesList').DataTable().search($(this).val()).draw();
             });
