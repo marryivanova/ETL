@@ -105,6 +105,6 @@ git clone https://github.com/marryivanova/ETL.git
 </figure>
 
 <figure>
-  <img src="src/docs_file/table_products">
+  <img src="src/docs_file/table_products.png">
   <figcaption>table products</figcaption>
 </figure>
