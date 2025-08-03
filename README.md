@@ -86,6 +86,23 @@ ETL pipeline for sales data analysis that:
 
 -> Access system at: http://127.0.0.1:8000
 ```
+Очень важно!!
+
+* при запуске миграций указать полный адресс `sqlalchemy.url = postgresql:/`
+
+* если будет выеживатся установите -> `pip install psycopg[binary]`
+
+```
+alembic upgrade head
+
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 77993181fb00
+INFO  [alembic.runtime.migration] Running upgrade 77993181fb00 -> 1cb41b4aac2b, add most_expensive and ods_users tables
+INFO  [alembic.runtime.migration] Running upgrade 1cb41b4aac2b -> aed1d4037978, add city column to ods_users
+INFO  [alembic.runtime.migration] Running upgrade aed1d4037978 -> ba8b1a6d6b7c, change_primary_key_to_id
+```
+
 #### table
 <figure>
   <img src="src/docs_file/list_table.png">
